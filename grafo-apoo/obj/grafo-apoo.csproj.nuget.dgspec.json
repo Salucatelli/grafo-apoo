@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Prog\\Faculdade\\APOO1\\grafo-apoo\\grafo\\grafo-apoo\\grafo-apoo.csproj": {}
+    "D:\\Prog\\Faculdade\\APOO1\\grafo\\grafo-apoo\\grafo-apoo.csproj": {}
   },
   "projects": {
-    "D:\\Prog\\Faculdade\\APOO1\\grafo-apoo\\grafo\\grafo-apoo\\grafo-apoo.csproj": {
+    "D:\\Prog\\Faculdade\\APOO1\\grafo\\grafo-apoo\\grafo-apoo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Prog\\Faculdade\\APOO1\\grafo-apoo\\grafo\\grafo-apoo\\grafo-apoo.csproj",
+        "projectUniqueName": "D:\\Prog\\Faculdade\\APOO1\\grafo\\grafo-apoo\\grafo-apoo.csproj",
         "projectName": "grafo-apoo",
-        "projectPath": "D:\\Prog\\Faculdade\\APOO1\\grafo-apoo\\grafo\\grafo-apoo\\grafo-apoo.csproj",
+        "projectPath": "D:\\Prog\\Faculdade\\APOO1\\grafo\\grafo-apoo\\grafo-apoo.csproj",
         "packagesPath": "C:\\Users\\saluc\\.nuget\\packages\\",
-        "outputPath": "D:\\Prog\\Faculdade\\APOO1\\grafo-apoo\\grafo\\grafo-apoo\\obj\\",
+        "outputPath": "D:\\Prog\\Faculdade\\APOO1\\grafo\\grafo-apoo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
