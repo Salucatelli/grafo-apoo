@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("grafo-apoo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+afa615e7497b87291e2eb175390f3dc105d64725")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+87e778b74175c59eac5d48c222931559d402ff29")]
 [assembly: System.Reflection.AssemblyProductAttribute("grafo-apoo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("grafo-apoo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -11,11 +11,18 @@ internal class Grafo
 {
     //Lista com todos os vértices do grafo
     public List<Vertice> Vertices { get; set; } = new List<Vertice>();
-    //public List<Aresta> Arestas { get; set; } =  new List<Aresta>();
 
     //Insere um novo vértice e adiciona um valor
     public Vertice insertVertex(int id)
     {
+        foreach(var ver in Vertices)
+        {
+            if(ver.Id == id)
+            {
+                return null!;
+            }
+        }
+
         Vertice vertice = new Vertice()
         {
             Id = id,
@@ -32,11 +39,11 @@ internal class Grafo
         Console.WriteLine("Vertices: ");
         foreach(Vertice vertice in Vertices)
         {
-            Console.WriteLine($" - Valor do Vértice: {vertice.Valor}\n (Nº {vertice.Id})");
+            Console.WriteLine($" - [{vertice.Id}]");
             Console.WriteLine($"  - Arestas:");
             foreach (var aresta in vertice.Arestas)
             {
-                Console.WriteLine($"   - {aresta.Valor} - Origem: {aresta.VerticeOrigem.Id} / Destino: {aresta.VerticeDestino.Id}");
+                Console.WriteLine($"   - {aresta.Valor} - Origem: [{aresta.VerticeOrigem.Id}] / Destino: [{aresta.VerticeDestino.Id}]");
             }
             Console.WriteLine("\n");
         }
@@ -51,6 +58,17 @@ internal class Grafo
             VerticeOrigem = origem,
             Valor = valor
         };
+
+        foreach(var vertice in Vertices)
+        {
+            foreach(var ar in vertice.Arestas)
+            {
+                if(ar.VerticeOrigem == origem && ar.VerticeDestino == destino)
+                {
+                    return null!;// já existe esta aresta
+                }
+            }
+        }
 
         origem.Arestas.Add(aresta);
         destino.Arestas.Add(aresta);
@@ -129,7 +147,6 @@ internal class Grafo
             {
                 if(aresta == a)
                 {
-                    //vertice.Arestas.Remove(a);
                     paraRemover.Add(aresta);
                 }
             }
@@ -137,8 +154,6 @@ internal class Grafo
             foreach(var aresta in paraRemover)
                 vertice.Arestas.Remove(aresta);
         }
-
-        //Arestas.Remove(a);
         return obj;
     }
 
@@ -156,8 +171,6 @@ internal class Grafo
             {
                 if(a.VerticeDestino == v || a.VerticeOrigem == v)
                 {
-                    //vertice.Arestas.Remove(a);
-                    //Arestas.Remove(a);
                     paraRemover.Add(a);
                 }
             }
@@ -231,9 +244,10 @@ internal class Grafo
         else
         {
             Console.WriteLine("Caminho mais curto (Id dos vértices): ");
+            caminho.Reverse();
             foreach (var ver in caminho)
             {
-                Console.Write($"{ver.Id}");
+                Console.Write($"[{ver.Id}]");
                 if(ver != caminho.Last())
                 {
                     Console.Write(" - ");
@@ -262,12 +276,10 @@ internal class Grafo
             string[] dadosAresta = linhas[i].Split(' ');
             int origemId = int.Parse(dadosAresta[0]);
             int destinoId = int.Parse(dadosAresta[1]);
-            //int peso = int.Parse(dadosAresta[2]);
 
             Vertice origem = Vertices.Find(v => v.Id == origemId)!;
             Vertice destino = Vertices.Find(v => v.Id == destinoId)!;
-            insertEdge(origem, destino, 1);
+            insertEdge(origem, destino, 1); // As arestas que vem do arquivo tem 1 como valor padrão
         }
     }
-
 }

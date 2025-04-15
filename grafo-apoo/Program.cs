@@ -9,51 +9,58 @@ while (true)
 {
     Console.WriteLine(MenuFunction());
 
-    int option = 0;
+    string resp = "";
 
-    option = Convert.ToInt32(Console.ReadLine());
+    resp = Convert.ToString(Console.ReadLine())!;
 
-    switch (option)
+    if(int.TryParse(resp, out int option))
     {
-        case 0:
-            Console.WriteLine("Volte Sempre");
-            return;
-        case 1:
-            InserirVertice();
-            break;
-        case 2:
-            VerVertices();
-            break;
-        case 3:
-            AdicionarAresta();
-            break;
-        case 4:
-            SubstituirVertice();
-            break;
-        case 5:
-            SubstituirAresta();
-            break;
-        case 6:
-            RemoverVertice();
-            break;
-        case 7:
-            RemoverAresta();
-            break;
-        case 8:
-            EncontrarMenorCaminho();
-            break;
-        case 9:
-            CarregarArquivo();
-            break;
-        default:
-            Console.WriteLine("ERRO");
-            break;
+        switch (option)
+        {
+            case 0:
+                Console.WriteLine("Volte Sempre");
+                return;
+            case 1:
+                InserirVertice();
+                break;
+            case 2:
+                VerVertices();
+                break;
+            case 3:
+                AdicionarAresta();
+                break;
+            case 4:
+                SubstituirVertice();
+                break;
+            case 5:
+                SubstituirAresta();
+                break;
+            case 6:
+                RemoverVertice();
+                break;
+            case 7:
+                RemoverAresta();
+                break;
+            case 8:
+                EncontrarMenorCaminho();
+                break;
+            case 9:
+                CarregarArquivo();
+                break;
+            default:
+                Console.Clear();
+                continue;
+        }
+    }
+    else
+    {
+        Console.Clear();
     }
 }
 
 static string MenuFunction()
 {
-    string menu = @"Bem vindo ao programa do Grafo, o que deseja fazer?
+    string menu = @"====Bem vindo ao programa do Grafo, o que deseja fazer?====
 
     1 - Inserir Vértice
     2 - Ver Vértices
@@ -74,13 +81,27 @@ void InserirVertice()
     Console.Clear();
     int valor = 0;
 
-    Console.WriteLine("\nDigite o id do Vértice que deseja criar: ");
+    Console.WriteLine("Digite o id do Vértice que deseja criar: ");
     valor = Convert.ToInt32(Console.ReadLine())!;
 
     var vertice = grafo.insertVertex(valor);
 
+    if(vertice == null)
+    {
+        Console.WriteLine("Erro ao criar vértice, id já existe");
+        Console.WriteLine("Digite Qualquer tecla para voltar ao menu...");
+        Console.ReadKey();
+        Console.Clear();
+        MenuFunction();
+        return;
+    }
+
     Console.WriteLine($"\nVértice {vertice.Valor} criado com sucesso!");
+    Console.WriteLine("Digite Qualquer tecla para voltar ao menu...");
+    Console.ReadKey();
     Console.Clear();
+    MenuFunction();
+    return;
 }
 
 void VerVertices()
@@ -94,6 +115,8 @@ void VerVertices()
 
 void AdicionarAresta()
 {
+    Console.Clear();
+
     int origem = 0;
     int destino = 0;
     int valor = 0;
@@ -129,7 +152,22 @@ void AdicionarAresta()
 
     var aresta = grafo.insertEdge(verOrigem, verDestino, valor);
 
+    if(aresta == null)
+    {
+        Console.WriteLine("Já existe uma aresta entre estes dois vértices");
+        Console.WriteLine("Digite Qualquer tecla para voltar ao menu...");
+        Console.ReadKey();
+        Console.Clear();
+        MenuFunction();
+        return;
+    }
+
     Console.WriteLine($"Aresta {aresta.Valor} Adicionada com sucesso!\n");
+    Console.WriteLine("Digite Qualquer tecla para voltar ao menu...");
+    Console.ReadKey();
+    Console.Clear();
+    MenuFunction();
+    return;
 }
 
 void SubstituirVertice()
@@ -177,7 +215,7 @@ void SubstituirAresta()
     Console.WriteLine("Vertices disponíveis: ");
     foreach (var vertex in grafo.Vertices)
     {
-        Console.WriteLine($"Nº {vertex.Id} - {vertex.Valor}");
+        Console.WriteLine($"Nº [{vertex.Id}] ");
     }
 
     int v = 0;
